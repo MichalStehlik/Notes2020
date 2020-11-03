@@ -24,7 +24,11 @@ namespace Notes2020.Pages
         {
             UserName = User.Identity.Name;
             var UserData = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).FirstOrDefault();
-            UserId = UserData.Value;
+            if (UserData != null)
+            {
+                UserId = UserData.Value;
+            }
+            
         }
     }
 }
