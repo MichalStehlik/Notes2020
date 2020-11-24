@@ -28,9 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/List">My Notes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-page="/Index">Admistration</a>
-                        </li>
+                        @if (User.IsInRole("Administrátor"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-page="/Index">Admistration</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

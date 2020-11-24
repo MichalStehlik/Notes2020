@@ -11,7 +11,7 @@ using Notes2020.Models;
 
 namespace Notes2020.Areas.Admin.Pages
 {
-    [Authorize]
+    [Authorize(Policy = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly Notes2020.Data.ApplicationDbContext _context;

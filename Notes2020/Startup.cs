@@ -32,6 +32,13 @@ namespace Notes2020
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthorization(
+                options =>
+                {
+                    options.AddPolicy("Admin", policy => policy.RequireRole("Administrátor"));
+                    options.AddPolicy("Adult", policy => policy.RequireClaim("Age","18"));
+                }
+                );
             services.AddRazorPages();
         }
 
