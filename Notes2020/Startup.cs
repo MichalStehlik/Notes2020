@@ -30,12 +30,12 @@ namespace Notes2020
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddAuthorization(
                 options =>
                 {
-                    options.AddPolicy("Admin", policy => policy.RequireRole("Administrátor"));
+                    options.AddPolicy("Admin", policy => policy.RequireRole("Administrator"));
                     options.AddPolicy("Adult", policy => policy.RequireClaim("Age","18"));
                 }
                 );

@@ -1,4 +1,10 @@
 ﻿@page
 @model Notes2020.Areas.Users.IndexModel
 @{
+    <ul>
+    @foreach(var role in Model.MyRoles)
+    {
+        <li>@role.Name</li>
+    }
+    </ul>
 }

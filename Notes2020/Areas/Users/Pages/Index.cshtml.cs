@@ -13,9 +13,19 @@ namespace Notes2020.Areas.Users
     {
         private ApplicationDbContext _context;
         private UserManager<IdentityUser> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
+        public IndexModel(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
+
+        public List<IdentityRole> MyRoles { get; set; }
         public void OnGet()
         {
+            MyRoles = _roleManager.Roles.ToList();
         }
     }
 }
