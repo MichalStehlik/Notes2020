@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ namespace Notes2020.Areas.Admin.Pages
     public class CreateModel : PageModel
     {
         private readonly Notes2020.Data.ApplicationDbContext _context;
+        public SelectList UsersList { get; set; }
 
         public CreateModel(Notes2020.Data.ApplicationDbContext context)
         {
@@ -21,7 +23,7 @@ namespace Notes2020.Areas.Admin.Pages
 
         public IActionResult OnGet()
         {
-        ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            UsersList = new SelectList(_context.Users.ToList(), nameof(IdentityUser.Id), nameof(IdentityUser.UserName));
             return Page();
         }
 

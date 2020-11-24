@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Notes2020.Models;
 
 namespace Notes2020.Areas.Admin.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly Notes2020.Data.ApplicationDbContext _context;

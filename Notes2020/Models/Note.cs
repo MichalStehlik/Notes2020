@@ -21,4 +21,6 @@ namespace Notes2020.Models
         [Required]
         public string UserId { get; set; }
     }
+
+    /// Note one ....; one.User.Email
 }
